@@ -2,6 +2,7 @@ class Api::V1::ImagesController < ApplicationController
 
 
     def index
+        images = images.all
         render json: Image.all
       end
 
