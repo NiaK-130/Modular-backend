@@ -2,7 +2,11 @@ class Api::V1::ImagesController < ApplicationController
 
 
     def index
-        render json: Image.all
+        puts "sdfsdfsdfsdfsfsdfsfsdfsdfsdfsf"
+
+        user_id = decoded_token[0]['user_id']
+        puts user_id
+        render json: Image.all.where(user_id:user_id)
       end
 
 
@@ -17,10 +21,9 @@ class Api::V1::ImagesController < ApplicationController
 
 
     def create
-
-        puts "hey we are herekfsdmflfmlsmlkfmfmlmf"
         
         image = Image.create!(image_params)
+        
         render json: image, status: :created
     end
 
